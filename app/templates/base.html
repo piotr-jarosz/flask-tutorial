@@ -10,6 +10,7 @@
     <a href="/" class="navbar-brand">Microblog</a>
     <ul class="nav navbar-nav flex-row">
             <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('explore') }}">Explore</a></li>
             {% if current_user.is_anonymous %}
             <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Login</a></li>
             {% else %}
