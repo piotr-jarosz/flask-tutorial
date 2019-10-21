@@ -5,6 +5,8 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 from flask_debugtoolbar import DebugToolbarExtension
+from flask_mail import Mail
+
 import logging
 from logging.handlers import SMTPHandler
 from logging.handlers import RotatingFileHandler
@@ -19,6 +21,8 @@ login = LoginManager(app)
 login.login_view = 'login'
 bootstrap = Bootstrap(app)
 toolbar = DebugToolbarExtension(app)
+mail = Mail(app)
+
 
 
 ### LOGGER
@@ -33,7 +37,7 @@ mail_handler = SMTPHandler(
     fromaddr='no-reply@' + app.config['MAIL_SERVER'],
     toaddrs=app.config['ADMINS'], subject='Microblog Failure',
     credentials=auth, secure=secure)
-mail_handler.setLevel(logging.ERROR)
+mail_handler.setLevel(logging.DEBUG)
 app.logger.addHandler(mail_handler)
 
 if not os.path.exists('logs'):
