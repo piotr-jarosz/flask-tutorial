@@ -6,6 +6,8 @@ from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_mail import Mail
+from flask_moment import Moment
+
 
 import logging
 from logging.handlers import SMTPHandler
@@ -22,6 +24,8 @@ login.login_view = 'login'
 bootstrap = Bootstrap(app)
 toolbar = DebugToolbarExtension(app)
 mail = Mail(app)
+moment = Moment(app)
+
 
 
 
@@ -53,6 +57,8 @@ app.logger.setLevel(logging.INFO)
 app.logger.info('Microblog startup')
 
 #### END OF LOGGER
+
+
 
 
 from app import routes, models, errors
