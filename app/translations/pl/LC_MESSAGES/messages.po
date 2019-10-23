@@ -7,22 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-10-22 22:31+0200\n"
-"PO-Revision-Date: 2019-10-22 22:42+0200\n"
+"POT-Creation-Date: 2019-10-23 19:35+0200\n"
+"PO-Revision-Date: 2019-10-23 19:36+0200\n"
+"Last-Translator: \n"
 "Language: pl\n"
 "Language-Team: pl <LL@li.org>\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && "
-"(n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n"
+"%100<10 || n%100>=20) ? 1 : 2);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.7.0\n"
-"Last-Translator: \n"
 "X-Generator: Poedit 2.2.4\n"
-
-#: app/__init__.py:28
-msgid "Please log in to access this page."
-msgstr "Zaloguj się, aby uzyskać dostęp do tej strony."
 
 #: app/email.py:20
 msgid "[Microblog] Reset Your Password"
@@ -32,7 +28,7 @@ msgstr "[Microblog] Zresetuj swoje hasło"
 msgid "Username"
 msgstr "Nazwa użytkownika"
 
-#: app/forms.py:10 app/forms.py:17
+#: app/forms.py:10 app/forms.py:17 app/forms.py:57
 msgid "Password"
 msgstr "Hasło"
 
@@ -40,7 +36,7 @@ msgstr "Hasło"
 msgid "Remember Me"
 msgstr "Zapamiętaj mnie"
 
-#: app/forms.py:12 app/routes.py:58 app/templates/login.html:5
+#: app/forms.py:12 app/routes.py:67 app/templates/login.html:5
 msgid "Sign In"
 msgstr "Zaloguj się"
 
@@ -52,7 +48,7 @@ msgstr "Email"
 msgid "Repeat Password"
 msgstr "Powtórz hasło"
 
-#: app/forms.py:20 app/routes.py:77 app/templates/register.html:5
+#: app/forms.py:20 app/routes.py:86 app/templates/register.html:5
 msgid "Register"
 msgstr "Zarejestruj się"
 
@@ -80,81 +76,96 @@ msgstr "Co słychać"
 msgid "Request Password Reset"
 msgstr "Zresetuj  hasło"
 
-#: app/routes.py:30
+#: app/routes.py:39
 msgid "Your post is now live!"
 msgstr "Twój post został opublikowany!"
 
-#: app/routes.py:39 app/templates/base.html:21
+#: app/routes.py:48 app/templates/base.html:25
 msgid "Home"
 msgstr "Strona główna"
 
-#: app/routes.py:51
+#: app/routes.py:60
 msgid "Invalid username or password"
 msgstr "Nieprawidłowa nazwa użytkownika lub hasło"
 
-#: app/routes.py:75
+#: app/routes.py:84
 msgid "Congratulations, you are now a registered user!"
 msgstr "Gratulacje! Resjestracja przebiegła pomyślnie."
 
-#: app/routes.py:101
+#: app/routes.py:110
 msgid "Your changes have been saved."
 msgstr "Zmiany zostały zapisane."
 
-#: app/routes.py:106 app/templates/edit_profile.html:5
+#: app/routes.py:115 app/templates/edit_profile.html:5
 msgid "Edit Profile"
 msgstr "Edytuj profil"
 
-#: app/routes.py:114 app/routes.py:129
+#: app/routes.py:123 app/routes.py:138
 #, python-format
 msgid "User %(username)s not found."
 msgstr "Nie znaleziono użytkownika %(username)s."
 
-#: app/routes.py:117
+#: app/routes.py:126
 msgid "You cannot follow yourself!"
 msgstr "Nie możesz przestać się obserwować!"
 
-#: app/routes.py:121
+#: app/routes.py:130
 #, python-format
 msgid "You are following %(username)s!"
 msgstr "Obserwujesz %(username)s!"
 
-#: app/routes.py:132
+#: app/routes.py:141
 msgid "You cannot unfollow yourself!"
 msgstr "Nie możesz przestać się obserwować!"
 
-#: app/routes.py:149 app/templates/base.html:22
+#: app/routes.py:158 app/templates/base.html:26
 msgid "Explore"
 msgstr "Przeglądaj"
 
-#: app/routes.py:161
+#: app/routes.py:170
 msgid "Check your email for the instructions to reset your password"
-msgstr ""
-"Sprawdź swój adres e-mail, aby uzyskać instrukcje resetowania hasła"
+msgstr "Sprawdź swój adres e-mail, aby uzyskać instrukcje resetowania hasła"
 
-#: app/routes.py:164 app/templates/reset_password_request.html:6
+#: app/routes.py:173 app/templates/reset_password_request.html:6
 msgid "Reset Password"
 msgstr "Resetuj hasło"
 
-#: app/routes.py:177
+#: app/routes.py:186
 msgid "Your password has been reset."
 msgstr "Twoje hasło zostało zresetowane."
+
+#: app/translate.py:9
+msgid "Error: the translation service is not configured."
+msgstr "Błąd: usługa tłumaczenia nie jest skonfigurowana."
+
+#: app/translate.py:16
+msgid "Error: the translation service failed."
+msgstr "Błąd: usługa tłumaczenia nie powiodła się."
 
 #: app/templates/_post.html:17
 #, python-format
 msgid "%(username)s said %(when)s"
 msgstr "%(username)s powiedział %(when)s"
 
-#: app/templates/base.html:26
+#: app/templates/_post.html:28
+msgid "Translate"
+msgstr "Tłumacz"
+
+#: app/templates/base.html:30
 msgid "Login"
 msgstr "Zaloguj się"
 
-#: app/templates/base.html:28
+#: app/templates/base.html:32
 msgid "Profile"
 msgstr "Profil"
 
-#: app/templates/base.html:29
+#: app/templates/base.html:33
 msgid "Logout"
 msgstr "Wyloguj"
+
+#: app/templates/base.html:70
+msgid "Error: Could not contact server."
+msgstr "Błąd: nie można skontaktować się z serwerem."
 
 #: app/templates/index.html:5
 #, python-format
@@ -218,3 +229,6 @@ msgstr "Obserwuj"
 #: app/templates/user.html:19
 msgid "Unfollow"
 msgstr "Przestań obserwować"
+
+#~ msgid "Please log in to access this page."
+#~ msgstr "Zaloguj się, aby uzyskać dostęp do tej strony."
