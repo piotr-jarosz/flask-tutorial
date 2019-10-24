@@ -8,12 +8,14 @@ from flask_mail import Mail
 from flask_moment import Moment
 from flask_babel import Babel
 from flask_babel import lazy_gettext as _l
-from config import Config
 
+from elasticsearch import Elasticsearch
 
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
+
+from config import Config
 
 
 db = SQLAlchemy()
@@ -50,6 +52,8 @@ def create_app(config_class=Config):
     from app.main import bp as main_bp
     app.register_blueprint(main_bp)
 
+    app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
+        if app.config['ELASTICSEARCH_URL'] else None
 
     ### LOGGER
     if not app.debug and not app.testing:
