@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-10-26 23:32+0200\n"
-"PO-Revision-Date: 2019-10-26 23:35+0200\n"
+"POT-Creation-Date: 2019-10-29 00:18+0100\n"
+"PO-Revision-Date: 2019-10-29 00:19+0100\n"
 "Last-Translator: \n"
 "Language: pl\n"
 "Language-Team: pl <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Generated-By: Babel 2.7.0\n"
 "X-Generator: Poedit 2.2.4\n"
 
-#: app/__init__.py:25
+#: app/__init__.py:26
 msgid "Please log in to access this page."
 msgstr "Zaloguj się, aby uzyskać dostęp do tej strony."
 
@@ -155,13 +155,21 @@ msgstr "Nie możesz przestać się obserwować!"
 msgid "Explore"
 msgstr "Przeglądaj"
 
-#: app/main/routes.py:160
+#: app/main/routes.py:161
 msgid "Your message has been sent."
 msgstr "Twoje hasło zostało zresetowane."
 
-#: app/main/routes.py:162
+#: app/main/routes.py:163
 msgid "Send Message"
 msgstr "Wyślij wiadomość"
+
+#: app/main/routes.py:199
+msgid "An export task is currently in progress"
+msgstr "Zadanie eksportu jest obecnie w toku"
+
+#: app/main/routes.py:201
+msgid "Exporting posts..."
+msgstr "Eksportowanie postów..."
 
 #: app/templates/_post.html:16
 #, python-format
@@ -180,15 +188,15 @@ msgstr "Zaloguj się"
 msgid "Messages"
 msgstr "Wiadomości"
 
-#: app/templates/base.html:46
+#: app/templates/base.html:50
 msgid "Profile"
 msgstr "Profil"
 
-#: app/templates/base.html:47
+#: app/templates/base.html:51
 msgid "Logout"
 msgstr "Wyloguj"
 
-#: app/templates/base.html:84
+#: app/templates/base.html:99
 msgid "Error: Could not contact server."
 msgstr "Błąd: nie można skontaktować się z serwerem."
 
@@ -197,11 +205,11 @@ msgstr "Błąd: nie można skontaktować się z serwerem."
 msgid "Hi, %(username)s!"
 msgstr "Cześć, %(username)s!"
 
-#: app/templates/index.html:17 app/templates/user.html:39
+#: app/templates/index.html:17 app/templates/user.html:50
 msgid "Newer posts"
 msgstr "Nowsze wpisy"
 
-#: app/templates/index.html:22 app/templates/user.html:44
+#: app/templates/index.html:22 app/templates/user.html:55
 msgid "Older posts"
 msgstr "Starsze wpisy"
 
@@ -248,19 +256,23 @@ msgstr "%(count)d osób cię obserwuje"
 msgid "%(count)d following"
 msgstr "Obserwujesz: %(count)d osób"
 
-#: app/templates/user.html:15
+#: app/templates/user.html:17
 msgid "Edit your profile"
 msgstr "Edycja profilu"
 
-#: app/templates/user.html:17 app/templates/user_popup.html:21
+#: app/templates/user.html:23
+msgid "Export your posts"
+msgstr "Eksportowanie postów"
+
+#: app/templates/user.html:28 app/templates/user_popup.html:21
 msgid "Follow"
 msgstr "Obserwuj"
 
-#: app/templates/user.html:19 app/templates/user_popup.html:25
+#: app/templates/user.html:30 app/templates/user_popup.html:25
 msgid "Unfollow"
 msgstr "Przestań obserwować"
 
-#: app/templates/user.html:25
+#: app/templates/user.html:36
 msgid "Send private message"
 msgstr "Wyślij prywatną wiadomość"
 

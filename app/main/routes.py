@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, url_for, g
 from flask import request, jsonify, current_app
 from flask_login import login_required, current_user
 from app import db
-from app.models import User, Post, Message
+from app.models import User, Post, Message, Notification
 from app.main.forms import EditProfileForm, MessageForm, PostForm, SearchForm
 from guess_language import guess_language
 from datetime import datetime
@@ -191,3 +191,13 @@ def notifications():
         'data': n.get_data(),
         'timestamp': n.timestamp
     } for n in notifications])
+
+@bp.route('/export_posts')
+@login_required
+def export_posts():
+    if current_user.get_task_in_progress('export_posts'):
+        flash(_('An export task is currently in progress'))
+    else:
+        current_user.launch_task('export_posts', _('Exporting posts...'))
+        db.session.commit()
+    return redirect(url_for('main.user', username=current_user.username))

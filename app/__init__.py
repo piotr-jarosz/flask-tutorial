@@ -13,7 +13,8 @@ from elasticsearch import Elasticsearch
 
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
-import os
+import os, rq
+from redis import Redis
 
 from config import Config
 
@@ -42,6 +43,9 @@ def create_app(config_class=Config):
     moment.init_app(app)
     babel.init_app(app)
     toolbar.init_app(app)
+
+    app.redis = Redis.from_url(app.config['REDIS_URL'])
+    app.task_queue = rq.Queue('microblog-tasks', connection=app.redis)
 
     from app.errors import bp as errors_bp
     app.register_blueprint(errors_bp)
@@ -82,6 +86,7 @@ def create_app(config_class=Config):
 
     app.logger.setLevel(logging.INFO)
     app.logger.info('Microblog startup')
+
 
     #### END OF LOGGER
 
