@@ -4,11 +4,11 @@ from app.search import add_to_index, remove_from_index, query_index
 from flask import current_app, url_for
 from flask_login import UserMixin
 
-from datetime import datetime
+from datetime import datetime, timedelta
 from time import time
 from hashlib import md5
 from werkzeug.security import generate_password_hash, check_password_hash
-import jwt, json, redis, rq
+import jwt, json, redis, rq, os, base64
 
 followers = db.Table('followers',
     db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
@@ -81,6 +81,8 @@ class PaginatedAPIMixin(object):
         }
         return data
 
+
+
 class User(UserMixin, PaginatedAPIMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
@@ -104,6 +106,8 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):
     notifications = db.relationship('Notification', backref='user',
                                     lazy='dynamic')
     tasks = db.relationship('Task', backref='user', lazy='dynamic')
+    token = db.Column(db.String(32), index=True, unique=True)
+    token_expiration = db.Column(db.DateTime)
 
     def add_notification(self, name, data):
         self.notifications.filter_by(name=name).delete()
@@ -206,6 +210,24 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):
         if new_user and 'password' in data:
             self.set_password(data['password'])
 
+    def get_token(self, expires_in=3600):
+        now = datetime.utcnow()
+        if self.token and self.token_expiration > now + timedelta(seconds=60):
+            return self.token
+        self.token = base64.b64encode(os.urandom(24)).decode('utf-8')
+        self.token_expiration = now + timedelta(seconds=expires_in)
+        db.session.add(self)
+        return self.token
+
+    def revoke_token(self):
+        self.token_expiration = datetime.utcnow() - timedelta(seconds=1)
+
+    @staticmethod
+    def check_token(token):
+        user = User.query.filter_by(token=token).first()
+        if user is None or user.token_expiration < datetime.utcnow():
+            return None
+        return user
 
         
 class Post(SearchableMixin, db.Model):
